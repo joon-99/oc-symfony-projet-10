@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Projets{% endblock %}
+
+{% block nav %}
+    {% include 'nav.html.twig' with {'activeRoute': 'app_project_index'} %}
+{% endblock %}
+
+{% block header_title %}Projets{% endblock %}
+
+{% block content %}
+    <div id="projects-container">
+        {% for project in projects %}
+            {% embed 'project/_project_card.html.twig' %}
+                {% block project_title %}{{ project.title }}{% endblock %}
+            {% endembed %}
+        {% endfor %}
+        <article class="card-project">
+            <a href="{{ path('app_project_new') }}" data-turbo="false">
+            <i class="fa-solid fa-circle-plus add-project-icon"></i>
+            <h2>Ajouter un projet</h2>
+            </a>
+        </article>
+    </div>
+{% endblock %}

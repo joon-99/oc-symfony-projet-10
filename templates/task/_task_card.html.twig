@@ -1,0 +1,16 @@
+<a class="task" data-turbo="false" href="{{ path('app_task_edit', {'id': task.id}) }}">
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.description }}</p>
+    <div class="task-infos">
+        {% if task.deadline %}
+            <div class="task-deadline">
+                <i class="fa-regular fa-calendar"></i> {{ task.deadline|date('d/m/Y') }}
+            </div>
+        {% endif %}
+        {% for user in task.users %}
+            <div class="mini-user">
+                {{ user.initials }}
+            </div>
+        {% endfor %}
+    </div>
+</a>

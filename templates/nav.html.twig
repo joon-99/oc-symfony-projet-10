@@ -1,0 +1,20 @@
+
+<a href="{{ path('app_project_index') }}" id="logo">
+    <img src="{{ asset('img/logo.png') }}" alt="Logo TaskLinker" />
+</a>
+<ul id="main-menu">
+    {% set route = 'app_project_index' %}
+    {% set isActive = (activeRoute is defined) and (route is same as activeRoute) ? 'active' : '' %}
+    <li class="{{ isActive }}">
+        <a href="{{ path('app_project_index') }}">
+        <i class="fa-solid fa-list-check"></i> Projets
+        </a>
+    </li>
+    {% set route = 'app_user_index' %}
+    {% set isActive = (activeRoute is defined) and (route is same as activeRoute) ? 'active' : '' %}
+    <li class="{{ isActive }}">
+        <a href="{{ path('app_user_index') }}">
+        <i class="fa-regular fa-user"></i> Équipe
+        </a>
+    </li>
+</ul>

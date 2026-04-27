@@ -1,0 +1,14 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Tâche {{ task.title }}{% endblock %}
+
+{% block nav %}
+    {% include 'nav.html.twig' with {'activeRoute': 'app_project_index'} %}
+{% endblock %}
+
+{% block header_title %}{{ task.title }}{% endblock %}
+
+{% block content %}
+    {% include 'task/_form.html.twig' %}
+{% endblock %}

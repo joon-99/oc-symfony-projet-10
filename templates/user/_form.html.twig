@@ -1,0 +1,11 @@
+{{ form_start(form) }}
+    {{ form_row(form.lastName) }}
+    {{ form_row(form.firstName) }}
+    {{ form_row(form.email) }}
+    <div class="form-flex">
+        {{ form_row(form.hiredOn) }}
+        {{ form_row(form.status) }}
+    </div>
+
+    <button class="button button-submit">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

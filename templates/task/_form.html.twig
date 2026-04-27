@@ -1,0 +1,22 @@
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    {% set submitLabel = task.id ? 'Modifier' : 'Ajouter' %}
+    <button class="button button-submit mt-5">{{ submitLabel }}</button>
+{{ form_end(form) }}
+
+{% if task.id %}
+    <form method="post" action="{{ path('app_task_delete', {'id': task.id}) }}" style="display:inline">
+        <div class="form-actions">
+            <form method="post" action="{{ path('app_task_delete', {'id': task.id}) }}">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ task.id) }}">
+                <button
+                    type="submit"
+                    class="btn btn-link text-danger p-0 m-0 fw-bolder text-center"
+                    onclick="return confirm('Supprimer cette tâche ?');"
+                >
+                    Supprimer la tâche
+                </button>
+            </form>
+        </div>
+    </form>
+{% endif %}

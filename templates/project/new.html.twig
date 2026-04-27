@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Projet{% endblock %}
+
+{% block header_title %}Nouveau Projet{% endblock %}
+
+{% block nav %}
+    {% include 'nav.html.twig' with {'activeRoute': 'app_project_index'} %}
+{% endblock %}
+
+{% block content %}
+    {{ include('project/_form.html.twig') }}
+{% endblock %}

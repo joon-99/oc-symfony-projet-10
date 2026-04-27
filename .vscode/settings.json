@@ -1,0 +1,19 @@
+{
+    "sqltools.connections": [
+        {
+            "ssh": "Disabled",
+            "previewLimit": 50,
+            "server": "127.0.0.1",
+            "port": 5432,
+            "askForPassword": true,
+            "driver": "PostgreSQL",
+            "name": "test",
+            "database": "app",
+            "username": "app"
+        }
+    ],
+    "intelephense.files.maxSize": 2000000,
+    "intelephense.environment.includePaths": [
+        "./templates"
+    ]
+}

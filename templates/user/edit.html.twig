@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ user }}{% endblock %}
+
+{% block nav %}
+    {% include 'nav.html.twig' with {'activeRoute': 'app_user_index'}%}
+{% endblock %}
+
+{% block header_title %}{{ user }}{% endblock %}
+
+{% block content %}
+
+    {{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+
+{% endblock %}
