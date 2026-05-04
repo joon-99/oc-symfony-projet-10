@@ -16,9 +16,16 @@ use Symfony\Component\Routing\Attribute\Route;
 final class RegistrationController extends AbstractController
 {
     //TODO : add uniqaue email validation to avoid doctrine exception
-    //TODO : add standard template setup
 
-    #[Route('/registration', name: 'app_registration')]
+    #[Route('/', name: 'app_dispatch')]
+    public function signIn(): Response
+    {
+        return $this->render('registration/index.html.twig', [
+            'controller_name' => 'RegistrationController',
+        ]);
+    }
+
+    #[Route('/sign-in', name: 'app_sign_in')]
     public function index(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
         $newUser = new User();
@@ -39,9 +46,16 @@ final class RegistrationController extends AbstractController
             }
         }
 
-        return $this->render('registration/index.html.twig', [
+        return $this->render('registration/sign-in.html.twig', [
             'controller_name' => 'RegistrationController',
             'form' => $form,
+        ]);
+    }
+
+    #[Route('/login', name: 'app_login')]
+    public function login(): Response {
+        return $this->render('registration/login.html.twig', [
+            'controller_name' => 'RegistrationController',
         ]);
     }
 }

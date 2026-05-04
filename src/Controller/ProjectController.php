@@ -13,7 +13,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Repository\TaskRepository;
 
-#[Route('/')]
 #[Route('/project')]
 final class ProjectController extends AbstractController
 {

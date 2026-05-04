@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        header, nav {
+            display: none;
+        }
+        #content {
+            padding: 0 !important;
+        }
+        div#content{
+            background: url('{{ asset('img/auth-bg.jpg') }}') center bottom no-repeat;
+            background-size: cover;
+            height: 100%;
+        }
+    </style>
+{% endblock %}
+
+{% block nav %}
+{% endblock %}
+
+{% block header_title %}{% endblock %}
+
+{% block content %}
+    <img class="auth-card-logo" src="{{ asset('img/logo.png') }}" alt="TaskLinker Logo">
+    <div class="auth-card">
+        {% block card_content %}{% endblock %}
+    </div>
+{% endblock %}

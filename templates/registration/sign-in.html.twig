@@ -1,0 +1,17 @@
+{% extends 'registration/base_auth.html.twig' %}
+
+{% block title %}S'inscrire - TaskLinker{% endblock %}
+
+
+{% block card_content %}
+    <style>
+        #content {
+            padding-top: 75px !important;
+        }
+    </style>
+    <div class="sign-in-content">
+        <h1>S'inscrire</h1>
+        {% include 'registration/_form.html.twig' with {'button_label': "S'inscrire"} %}
+        <a class="small-link" href="{{ path('app_login') }}">Vous avez déjà un compte ?</a>
+    </div>
+{% endblock %}

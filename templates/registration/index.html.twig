@@ -1,17 +1,20 @@
-{% extends 'base.html.twig' %}
+{% extends 'registration/base_auth.html.twig' %}
 
-{% block title %}Hello RegistrationController!{% endblock %}
+{% block title %}Bienvenue sur TaskLinker{% endblock %}
 
-{% block content %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    {{ include('registration/_form.html.twig') }}
-
-</div>
+{% block card_content %}
+    <style>
+        #content {
+            padding-top: 136px !important;
+        }
+    </style>
+    <div class="dispatch-content">
+        <h1>Bienvenue sur TaskLinker</h1>
+        <h2 class="large-gap">Commencez dès maintenant - gratuitement</h2>
+        <h3 class="medium-gap">Vous avez déjà un compte ?</h3>
+        <a class="button dark-button" href="{{ path('app_login') }}">Se connecter</a>
+        <h3 class="text-surrounded-lines">ou</h3>
+        <a class="button light-button" href="{{ path('app_sign_in') }}">S'inscrire</a>
+    </div>
 {% endblock %}
