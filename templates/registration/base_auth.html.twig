@@ -24,7 +24,9 @@
 {% block header_title %}{% endblock %}
 
 {% block content %}
-    <img class="auth-card-logo" src="{{ asset('img/logo.png') }}" alt="TaskLinker Logo">
+    <a href="{{ path('app_dispatch') }}">
+        <img class="auth-card-logo" src="{{ asset('img/logo.png') }}" alt="TaskLinker Logo">
+    </a>
     <div class="auth-card">
         {% block card_content %}{% endblock %}
     </div>

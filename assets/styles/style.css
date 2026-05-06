@@ -92,13 +92,20 @@ ul#main-menu i {
 }
 
 header {
+    display: flex;
+    justify-content: space-between;
     background: var(--color-secondary);
     height: 155px;
     padding: 30px 80px 10px 80px;
 }
 
 div#current-user {
+    color: var(--color-background);
     height: 55px;
+}
+
+div#current-user a {
+    color: var(--color-background);
 }
 
 div#title-page h1 {
@@ -715,6 +722,18 @@ form .select2-container--default .select2-selection--multiple .select2-selection
 
 .sign-in-content a {
     margin-top: 24px;
+}
+
+.login-content {
+    height: 698px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 110px 200px 148px 200px;
+}
+
+.login-content p {
+    margin-top: 16px;
 }
 
 

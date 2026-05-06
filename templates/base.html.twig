@@ -25,16 +25,24 @@
         </nav>
         <main>
             <header>
-                <div id="current-user"></div>
                 <div id="title-page">
                     {% block header %}
                         <h1>{% block header_title %}{% endblock %}</h1>
                     {% endblock %}
                 </div>
+                <div id="current-user">
+                    {% if app.user %}
+                        <p>{{ app.user.firstName | capitalize }} {{ app.user.lastName | upper }}</p>
+                        <a href="{{ logout_path() }}">Se déconnecter</a>
+                    {% endif %}
+                </div>
             </header>
             <div id="content">
                 {% for type, messages in app.flashes %}
                     {% for msg in messages %}
+                        {% if type is same as 'error' %}
+                            {% set type = 'danger' %}
+                        {% endif %}
                         <div class="alert alert-{{ type }}">{{ msg }}</div>
                     {% endfor %}
                 {% endfor %}

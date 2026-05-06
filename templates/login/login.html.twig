@@ -1,0 +1,35 @@
+{% extends 'registration/base_auth.html.twig' %}
+
+{% block title %}Se connecter - TaskLinker{% endblock %}
+
+{% block card_content %}
+    <style>
+        #content {
+            padding-top: 75px !important;
+        }
+    </style>
+    <div class="login-content">
+        {% if app.user %}
+            <div class="mb-3">
+                You are logged in as {{ app.user.userIdentifier }}, <a href="{{ logout_path() }}">Logout</a>
+            </div>
+        {% else %}
+            <h1>Se connecter</h1>
+
+            {% if error %}
+                {# symfony-dev-tools:mark-used security:* #}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% include 'registration/_form.html.twig' with {'button_label': "Se connecter"} %}
+
+            <p>
+                Pas de compte ? <a class="small-link" href="{{ path('app_sign_in') }}">S'inscrire</a>
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+
+

@@ -29,6 +29,9 @@ class UserType extends AbstractType
             ])
             ->add('hiredOn', DateType::class, [
                 'label' => "Date d'entrée",
+                'attr' => [
+                    'lang' => 'fr-FR',
+                ]
             ])
             ->add('status', ChoiceType::class, [
                 'choices' => array_combine(ContractEnum::values(), ContractEnum::values()),
