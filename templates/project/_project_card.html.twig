@@ -2,7 +2,7 @@
     <a href="{{ path('app_project_show', {'id': project.id}) }}">
         <h2>{% block project_title %}{% endblock %}</h2>
     </a>
-    {% if is_granted('ROLE_ADMIN') %}
+    {% if is_granted('PROJECT_EDIT', project) %}
         <div class="card-project-icons">
             <a href="{{ path('app_project_edit', {'id': project.id}) }}" data-turbo="false"><i class="fa-solid fa-pen"></i></a>
             <form method="post" action="{{ path('app_project_delete', {'id': project.id}) }}" style="display:inline">

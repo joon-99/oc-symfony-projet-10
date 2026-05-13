@@ -27,6 +27,7 @@ final class ProjectController extends AbstractController
     #[Route('/{id}/show', name: 'app_project_show', methods: ['GET'])]
     public function show(Project $project, TaskRepository $taskRepository): Response
     {
+        $this->denyAccessUnlessGranted('PROJECT_VIEW', $project);
         $categories = [];
         foreach (TaskCategoryEnum::cases() as $categoryName) {
             $tasksInCategory = $taskRepository->findAllByCategoryProject($categoryName->value, $project);
@@ -45,6 +46,7 @@ final class ProjectController extends AbstractController
     #[Route('/{id}/edit', name: 'app_project_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, ?Project $project = null, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('PROJECT_EDIT', $project);
         if ($project === null) {
             $project = new Project();
         }
@@ -69,6 +71,7 @@ final class ProjectController extends AbstractController
     #[Route('/{id}/delete', name: 'app_project_delete', methods: ['POST'])]
     public function delete(Request $request, Project $project, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('PROJECT_EDIT', $project);
         if ($this->isCsrfTokenValid('delete'.$project->getId(), $request->request->get('_token'))) {
             try {
                 $entityManager->remove($project);

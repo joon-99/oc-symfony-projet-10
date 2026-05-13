@@ -14,7 +14,7 @@
                 <div class="avatar">{{ user.initials }}</div>
             {% endfor %}
         </div>
-        {% if is_granted('ROLE_ADMIN') %}
+        {% if is_granted('PROJECT_EDIT', project) %}
             <a class="button" data-turbo="false" href="{{ path('app_project_edit', {'id': project.id}) }}">Modifier</a>
         {% endif %}
     </div>

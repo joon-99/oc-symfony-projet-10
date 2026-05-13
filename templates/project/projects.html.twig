@@ -11,9 +11,11 @@
 {% block content %}
     <div id="projects-container">
         {% for project in projects %}
-            {% embed 'project/_project_card.html.twig' %}
-                {% block project_title %}{{ project.title }}{% endblock %}
-            {% endembed %}
+            {% if is_granted('PROJECT_VIEW', project) %}
+                {% embed 'project/_project_card.html.twig' %}
+                    {% block project_title %}{{ project.title }}{% endblock %}
+                {% endembed %}
+            {% endif %}
         {% endfor %}
         {% if is_granted('ROLE_ADMIN') %}
             <article class="card-project">
