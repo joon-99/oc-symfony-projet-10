@@ -99,15 +99,6 @@ header {
     padding: 30px 80px 10px 80px;
 }
 
-div#current-user {
-    color: var(--color-background);
-    height: 55px;
-}
-
-div#current-user a {
-    color: var(--color-background);
-}
-
 div#title-page h1 {
     font-family: Manrope;
     font-size: 22px;
@@ -235,6 +226,21 @@ div#projects-container {
     margin-left: -12px;
     background: var(--color-primary);
     border: 1px solid lightgray;
+}
+
+.login-avatar {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    background: var(--color-background);
+    border: 1px solid var(--color-primary);
+    font-size: 18px;
+    font-weight: 700;
+    text-decoration: none;
 }
 
 .user-list {

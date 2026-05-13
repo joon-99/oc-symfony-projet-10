@@ -32,8 +32,9 @@
                 </div>
                 <div id="current-user">
                     {% if app.user %}
-                        <p>{{ app.user.firstName | capitalize }} {{ app.user.lastName | upper }}</p>
-                        <a href="{{ logout_path() }}">Se déconnecter</a>
+                        <a class="login-avatar" href="{{ path('app_logout') }}"> 
+                            {{ app.user.initials }}
+                        </a>
                     {% endif %}
                 </div>
             </header>
