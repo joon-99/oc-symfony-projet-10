@@ -2,22 +2,21 @@
 
 namespace App\Security\Voter;
 
-use App\Entity\Project;
+use App\Entity\Task;
 use App\Entity\User;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Vote;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
 
-final class ProjectVoter extends Voter
+final class TaskVoter extends Voter
 {
-    public const EDIT = 'PROJECT_EDIT';
-    public const VIEW = 'PROJECT_VIEW';
-    public const ADD_TASK = 'PROJECT_ADD_TASK';
+    public const EDIT = 'TASK_EDIT';
+    public const VIEW = 'TASK_VIEW';
 
     protected function supports(string $attribute, mixed $subject): bool
     {
-        return in_array($attribute, [self::EDIT, self::VIEW, self::ADD_TASK])
-            && $subject instanceof \App\Entity\Project;
+        return in_array($attribute, [self::EDIT, self::VIEW])
+            && $subject instanceof Task;
     }
 
     protected function voteOnAttribute(string $attribute, mixed $subject, TokenInterface $token, ?Vote $vote = null): bool
@@ -29,8 +28,8 @@ final class ProjectVoter extends Voter
             $vote?->addReason("L'utilisateur doit être connecté pour accéder à cette ressource.");
             return false;
         }
-        if (!$subject instanceof Project) {
-            $vote?->addReason("La ressource demandée n'est pas un projet valide.");
+        if (!$subject instanceof Task) {
+            $vote?->addReason("La ressource demandée n'est pas une tâche valide.");
             return false;
         }
         $isAdmin = in_array('ROLE_ADMIN', $user->getRoles());
@@ -40,11 +39,8 @@ final class ProjectVoter extends Voter
 
         switch ($attribute) {
             case self::EDIT:
-                return false;
             case self::VIEW:
-                return $subject->getUsers()->contains($user);
-            case self::ADD_TASK:
-                return $subject->getUsers()->contains($user);
+                return $subject->getProject()->getUsers()->contains($user);
         }
 
         return false;

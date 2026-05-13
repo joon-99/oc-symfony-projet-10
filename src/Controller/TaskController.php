@@ -26,6 +26,7 @@ class TaskController extends AbstractController
                 throw new BadRequestException('Une tâche doit appartenir à un projet.');
             }
         }
+        $this->denyAccessUnlessGranted('TASK_EDIT', $task);
         $form = $this->createForm(TaskType::class, $task);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -43,6 +44,7 @@ class TaskController extends AbstractController
     #[Route('/{id}/delete', name: 'app_task_delete', methods: ['POST'])]
     public function delete(Request $request, Task $task, EntityManagerInterface $entityManager): Response
     {
+        $this->denyAccessUnlessGranted('TASK_EDIT', $task);
         if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->request->get('_token'))) {
             try {
                 $entityManager->remove($task);
