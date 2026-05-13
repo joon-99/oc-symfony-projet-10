@@ -3,6 +3,7 @@
         <tr>
             <th>Prénom, Nom</th>
             <th>Statut</th>
+            <th>Rôle</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -21,6 +22,7 @@
                     </div>
                 </td>
                 <td>{{ employee.status.value }}</td>
+                <td>{{ employee.role | trans}}</td>
                 <td>
                     <a class="button button-edit-team" href="{{ path('app_user_edit', {'id': employee.id}) }}">
                     Éditer
