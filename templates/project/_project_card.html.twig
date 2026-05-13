@@ -2,17 +2,19 @@
     <a href="{{ path('app_project_show', {'id': project.id}) }}">
         <h2>{% block project_title %}{% endblock %}</h2>
     </a>
-    <div class="card-project-icons">
-        <a href="{{ path('app_project_edit', {'id': project.id}) }}" data-turbo="false"><i class="fa-solid fa-pen"></i></a>
-        <form method="post" action="{{ path('app_project_delete', {'id': project.id}) }}" style="display:inline">
-            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
-            <button
-                type="submit"
-                class="btn btn-link text-danger p-0 m-0 align-baseline"
-                onclick="return confirm('Delete this project?');"
-            >
-                <i class="fa-solid fa-trash"></i>
-            </button>
-        </form>
-    </div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <div class="card-project-icons">
+            <a href="{{ path('app_project_edit', {'id': project.id}) }}" data-turbo="false"><i class="fa-solid fa-pen"></i></a>
+            <form method="post" action="{{ path('app_project_delete', {'id': project.id}) }}" style="display:inline">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ project.id) }}">
+                <button
+                    type="submit"
+                    class="btn btn-link text-danger p-0 m-0 align-baseline"
+                    onclick="return confirm('Delete this project?');"
+                >
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </form>
+        </div>
+    {% endif %}
 </article>

@@ -17,7 +17,6 @@ use Symfony\Component\Routing\Attribute\Route;
 final class RegistrationController extends AbstractController
 {
     //TODO : add uniqaue email validation to avoid doctrine exception
-    //TODO : setup user logged in badge
 
     #[Route('/', name: 'app_dispatch')]
     public function index(): Response

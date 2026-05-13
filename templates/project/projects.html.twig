@@ -15,11 +15,13 @@
                 {% block project_title %}{{ project.title }}{% endblock %}
             {% endembed %}
         {% endfor %}
-        <article class="card-project">
-            <a href="{{ path('app_project_new') }}" data-turbo="false">
-            <i class="fa-solid fa-circle-plus add-project-icon"></i>
-            <h2>Ajouter un projet</h2>
-            </a>
-        </article>
+        {% if is_granted('ROLE_ADMIN') %}
+            <article class="card-project">
+                <a href="{{ path('app_project_new') }}" data-turbo="false">
+                    <i class="fa-solid fa-circle-plus add-project-icon"></i>
+                    <h2>Ajouter un projet</h2>
+                </a>
+            </article>
+        {% endif %}
     </div>
 {% endblock %}
