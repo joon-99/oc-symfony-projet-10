@@ -11,13 +11,12 @@ use App\Form\TaskType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[IsGranted('IS_AUTHENTICATED_FULLY')]
+#[Route('/task')]
 class TaskController extends AbstractController
 {
     #[Route('/new/{project}', name: 'app_task_new', methods: ['GET', 'POST'])]
-    #[Route('/task/{id}/edit', name: 'app_task_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_task_edit', methods: ['GET', 'POST'])]
     public function taskEdit(?Task $task, ?Project $project = null,Request $request, EntityManagerInterface $entityManager): Response {
         if (!$task) {
             $task = new Task();
